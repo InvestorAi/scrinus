@@ -73,8 +73,8 @@ class AppStore {
         if (parsed.currentUser) this.currentUser = parsed.currentUser;
       }
       // Check if URL specifies a view via hash, e.g. #Studio
-      const hash = typeof window !== 'undefined' && window.location.hash ? window.location.hash.replace('#', '').trim() : '';
-      if (hash) {
+      let hash = typeof window !== 'undefined' && window.location.hash ? window.location.hash.replace(/^#\/?/, '').trim() : '';
+      if (hash && hash !== '/') {
         this.activeView = hash;
       } else {
         this.activeView = 'Dashboard';

@@ -8,24 +8,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="./src/styles.css" />
     <script>
+      // Global error listener to display diagnostic notices instead of blank screen
       window.addEventListener('error', function(e) {
         console.error('[KERYX ERROR]', e.error || e.message);
-        const existing = document.getElementById('keryx-fatal-error');
-        if (!existing) {
-          const errDiv = document.createElement('div');
-          errDiv.id = 'keryx-fatal-error';
-          errDiv.style.cssText = 'position:fixed;bottom:20px;right:20px;max-width:420px;padding:16px 20px;background:#1a252c;border:1px solid #df654e;border-radius:10px;color:#fff;z-index:999999;font-family:sans-serif;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,0.6);';
-          errDiv.innerHTML = '<strong style="color:#df654e;display:block;margin-bottom:6px;">KERYX Notice</strong><span>' + (e.message || 'Operation recovered safely.') + '</span>';
+        const errDiv = document.createElement('div');
+        errDiv.id = 'keryx-fatal-error';
+        errDiv.style.cssText = 'position:fixed;bottom:20px;right:20px;max-width:440px;padding:16px 20px;background:#1a252c;border:1px solid #df654e;border-radius:10px;color:#fff;z-index:999999;font-family:sans-serif;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,0.6);';
+        errDiv.innerHTML = '<strong style="color:#df654e;display:block;margin-bottom:6px;">KERYX Runtime Notice</strong><span>' + (e.message || 'Operation recovered safely.') + '</span>';
+        if (document.body) {
           document.body.appendChild(errDiv);
-          setTimeout(() => errDiv.remove(), 6000);
+        } else {
+          window.addEventListener('DOMContentLoaded', function() {
+            document.body.appendChild(errDiv);
+          });
         }
+        setTimeout(function() { if (errDiv.parentNode) errDiv.remove(); }, 8000);
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        console.warn('[KERYX UNHANDLED REJECTION]', e.reason);
       });
     </script>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="src/app/main.js"></script>
+    <div id="app">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#080710;color:#f1f0fb;font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+        <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px;box-shadow:0 0 30px rgba(139,92,246,0.5);margin-bottom:16px;color:#fff;">K</div>
+        <h2 style="margin:0 0 8px;font-size:20px;font-weight:700;letter-spacing:0.5px;">KERYX CHURCH OS</h2>
+        <p style="margin:0;color:#9490b8;font-size:13px;">Initializing Ministry Presentation Engine...</p>
+      </div>
+    </div>
+    <script type="module" src="./src/app/main.js"></script>
   </body>
 </html>
