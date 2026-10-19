@@ -2,6 +2,9 @@
 node_modules/
 package-lock.json
 
+# Build Output
+dist/
+
 # Environment and Keys
 .env
 .env.local
@@ -17,4 +20,3 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
-
