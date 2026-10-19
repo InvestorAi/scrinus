@@ -9,7 +9,7 @@ const path = require('path');
 const os = require('os');
 
 const DEFAULT_PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 8080;
-const ROOT_DIR = fs.existsSync(path.join(__dirname, 'public')) ? path.join(__dirname, 'public') : __dirname;
+const ROOT_DIR = __dirname;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
