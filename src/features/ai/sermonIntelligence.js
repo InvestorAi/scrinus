@@ -60,13 +60,7 @@ export class SermonIntelligence {
     const anchorScriptures = detectedScriptures.length > 0
       ? detectedScriptures.join('; ')
       : (aiStore.detectedScriptures?.[0]?.reference || 'Romans 8:28, Psalm 23:1');
-    if (hasWarOrCanaan) anchorList.push('Judges 3:1-2 (God left nations to teach subsequent generations war)');
-    if (hasWarOrCanaan || lower.includes('battle')) anchorList.push('Proverbs 24:6 (By wise counsel thou shalt make thy war)');
-    if (hasWealthOrMoney) anchorList.push('Deuteronomy 8:18 (The Lord giveth thee power to get wealth)');
-    if (lower.includes('fighter') || lower.includes('stronghold')) anchorList.push('2 Corinthians 10:4 (The weapons of our warfare are not carnal)');
-    if (lower.includes('land') || lower.includes('found')) anchorList.push('Joshua 1:3 (Every place the sole of your foot treads upon)');
-    if (hasFaithOrGrace || anchorList.length === 0) {
-      anchorList.push('Romans 8:28 (Divine purpose in all things)');
+
     // 3. Dynamic Practical Application based on sermon content
     let practicalApp = 'Actively apply the preached word this week: meditate on the referenced scriptures, align daily choices with biblical truth, and pray for wisdom to walk in victory.';
     if (lower.includes('pray') || lower.includes('intercession')) {
