@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "KERYX — Professional AI-Native Church Presentation & Ministry Operating System",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "node scripts/build_standalone.js"
   },
   "keywords": [
     "church-presentation",
