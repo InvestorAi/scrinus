@@ -2,7 +2,6 @@
   "name": "keryx-church-os",
   "version": "2.0.0",
   "description": "KERYX — Professional AI-Native Church Presentation & Ministry Operating System",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
