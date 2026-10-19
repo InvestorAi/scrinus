@@ -1,0 +1,24 @@
+{
+  "name": "keryx-church-os",
+  "version": "2.0.0",
+  "description": "KERYX — Professional AI-Native Church Presentation & Ministry Operating System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo \"KERYX is a zero-build modern ES module architecture. Ready for deployment.\""
+  },
+  "keywords": [
+    "church-presentation",
+    "worship-software",
+    "ministry-os",
+    "bible-presentation",
+    "ai-church",
+    "pro-presenter-alternative"
+  ],
+  "author": "Godswill Johnson",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

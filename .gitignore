@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment and Keys
+.env
+.env.local
+*.env
+
+# Local Scratch & Diagnostics
+scratch/
+scratch_dom.html
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
