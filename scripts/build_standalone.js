@@ -17,6 +17,9 @@ const standaloneHtml = `<!doctype html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0d1417" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>KERYX — AI Church Presentation & Ministry OS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,6 +30,10 @@ ${css}
     <script>
       // Global error listener to display diagnostic notices instead of blank screen
       window.addEventListener('error', function(e) {
+        // Ignore third-party scripts, browser extensions, or toolbar scripts
+        if (e.filename && (e.filename.includes('extension') || e.filename.includes('share-modal') || !e.filename.includes(window.location.host))) {
+          return;
+        }
         console.error('[KERYX ERROR]', e.error || e.message);
         const errDiv = document.createElement('div');
         errDiv.id = 'keryx-fatal-error';
