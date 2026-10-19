@@ -5,6 +5,7 @@ const rootDir = path.join(__dirname, '..');
 const cssPath = path.join(rootDir, 'styles.css');
 const bundlePath = path.join(rootDir, 'bundle.js');
 const indexPath = path.join(rootDir, 'index.html');
+const distDir = path.join(rootDir, 'dist');
 
 const css = fs.readFileSync(cssPath, 'utf8');
 const bundle = fs.readFileSync(bundlePath, 'utf8');
@@ -60,5 +61,21 @@ ${bundle}
 </html>
 `;
 
+// Write to root index.html
 fs.writeFileSync(indexPath, standaloneHtml, 'utf8');
-console.log('Successfully generated standalone index.html! Size: ' + (Buffer.byteLength(standaloneHtml, 'utf8') / 1024).toFixed(2) + ' KB');
+
+// Ensure dist directory exists
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir, { recursive: true });
+}
+
+// Write to dist/index.html
+fs.writeFileSync(path.join(distDir, 'index.html'), standaloneHtml, 'utf8');
+
+// Copy bundle.js and styles.css to dist/
+fs.copyFileSync(bundlePath, path.join(distDir, 'bundle.js'));
+fs.copyFileSync(cssPath, path.join(distDir, 'styles.css'));
+
+console.log('Successfully generated standalone index.html and dist/ assets!');
+console.log('Root index.html size: ' + (Buffer.byteLength(standaloneHtml, 'utf8') / 1024).toFixed(2) + ' KB');
+console.log('Dist assets populated: index.html, bundle.js, styles.css');
